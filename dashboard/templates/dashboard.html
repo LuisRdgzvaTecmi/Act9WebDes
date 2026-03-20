@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | Activity 9{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="dashboard-header">
+        <span class="dashboard-badge">DASHBOARD</span>
+        <h1 class="dashboard-title">
+            Welcome back, <span class="gradient-text">{{ user.username }}</span>
+        </h1>
+        <p class="dashboard-subtitle">You are logged in and viewing your personal dashboard.</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dash-card dash-card-profile">
+            <div class="dash-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+            <h3>Profile</h3>
+            <div class="profile-info">
+                <div class="info-row">
+                    <span class="info-label">Username</span>
+                    <span class="info-value">{{ user.username }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email</span>
+                    <span class="info-value">{{ user.email }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Member since</span>
+                    <span class="info-value">{{ user.created_at|date:"M d, Y" }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-card dash-card-security">
+            <div class="dash-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <h3>Security</h3>
+            <div class="security-info">
+                <div class="security-item">
+                    <span class="security-dot green"></span>
+                    <span>SHA-256 password hashing active</span>
+                </div>
+                <div class="security-item">
+                    <span class="security-dot green"></span>
+                    <span>Token authentication enabled</span>
+                </div>
+                <div class="security-item">
+                    <span class="security-dot green"></span>
+                    <span>Session is encrypted</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-card dash-card-stats">
+            <div class="dash-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+            <h3>Activity</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Active Session</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">&#10003;</span>
+                    <span class="stat-label">Authenticated</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
