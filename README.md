@@ -38,9 +38,13 @@ Follow these steps to deploy the application locally:
    ```
 
 4. **Environment Variables:**
-   Create a `.env` file in the root directory and add the required environmental variables, such as:
+   Create a `.env` file in the root directory and add:
    ```env
    SECRET_KEY=your-secure-django-secret-key
+   EMAIL_HOST=smtp.gmail.com
+   EMAIL_PORT=465
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-app-password
    ```
 
 5. **Run Database Migrations:**

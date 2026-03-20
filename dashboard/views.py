@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from dashboard.models import CustomUser, AuthToken
 from dashboard.forms import RegistrationForm, LoginForm
+from dashboard.mail import send_welcome_email, send_login_alert_email
 
 
 def landing_page(request):
@@ -39,6 +40,7 @@ def register_view(request):
                 user = CustomUser(username=username, email=email)
                 user.set_password(password)
                 user.save()
+                send_welcome_email(username, email)
                 messages.success(request, 'Account created! Please log in.')
                 return redirect('login')
     else:
@@ -63,6 +65,7 @@ def login_view(request):
                 if user.check_password(password):
                     token = AuthToken.generate(user)
                     request.session['auth_token'] = token.key
+                    send_login_alert_email(user.username, user.email)
                     messages.success(request, f'Welcome back, {user.username}!')
                     return redirect('dashboard')
                 else:
